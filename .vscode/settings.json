@@ -7,4 +7,6 @@
     },
     "files.eol": "\n",
     "workbench.tree.indent": 25,
+    "javascript.updateImportsOnFileMove.enabled": "always",
+    "typescript.updateImportsOnFileMove.enabled": "always"
 }
