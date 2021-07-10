@@ -2,16 +2,18 @@ module.exports = {
     env: {
         browser: true,
         es6: true,
+        'jest/globals': true,
+        jest: true,
     },
     parserOptions: {
         project: './tsconfig.json',
         ecmaFeatures: { jsx: true },
-        ecmaVersion: 2021,
+        ecmaVersion: 'latest',
         sourceType: 'module',
     },
     plugins: [
         'simple-import-sort',
-        'modules-newline'
+        'modules-newline',
     ],
     extends: [
         'plugin:@typescript-eslint/recommended',
@@ -20,6 +22,7 @@ module.exports = {
         'plugin:jsx-a11y/recommended',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
+        'plugin:jest/recommended',
         'airbnb-typescript',
     ],
     rules: {
@@ -38,18 +41,18 @@ module.exports = {
             4,
         ],
 
-        // react rules
-        'react/require-default-props': 'off',
-
         // line length rules
         'max-len': [
             'error',
             {
-                comments: 120,
-                code: 80,
+                comments: 256,
+                code: 120,
                 ignoreUrls: true,
             },
         ],
+
+        // react rules
+        'react/require-default-props': 'off',
 
         // jsx rules
         'react/jsx-filename-extension': 'off',
@@ -103,6 +106,8 @@ module.exports = {
         ],
 
         // misc rules
+        'no-await-in-loop': 'off',
+        'no-process-env': 'off',
         'linebreak-style': [
             'error',
             'unix',
@@ -112,8 +117,12 @@ module.exports = {
             'always',
         ],
         quotes: [
-            'error',
+            2,
             'single',
+            {
+                avoidEscape: true,
+                allowTemplateLiterals: true,
+            },
         ],
         'arrow-parens': [
             'error',
