@@ -5,5 +5,6 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": true
     },
+    "files.eol": "\n",
     "workbench.tree.indent": 25,
 }
