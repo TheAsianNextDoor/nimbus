@@ -108,10 +108,7 @@ module.exports = {
         // misc rules
         'no-await-in-loop': 'off',
         'no-process-env': 'off',
-        'linebreak-style': [
-            'error',
-            'unix',
-        ],
+        'linebreak-style': 0, // <-- Fixing the LF/CRLF issue
         semi: [
             'error',
             'always',
