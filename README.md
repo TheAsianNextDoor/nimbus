@@ -2,7 +2,7 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Install and Run A nimbus Dev Branch
 
 In the project directory, you can run:
 
