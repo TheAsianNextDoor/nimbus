@@ -2,6 +2,8 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Download the source code and then open a command prompt in the project folder and run the following scripts.
+
 ## Install and Run A nimbus Dev Branch
 
 In the project directory, you can run:
@@ -9,11 +11,6 @@ In the project directory, you can run:
 ### `npx create-react-app nimbus `
 
 First you will need re-create the react app in the folder where you download the repository. Make sure you have React and Node installed and then run this command. You may need to delete the node_modules folder, and the package-lock file, both of which will be recreated when the app is generated.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
 ### `npm install @material-ui/core`
 
@@ -36,3 +33,8 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
