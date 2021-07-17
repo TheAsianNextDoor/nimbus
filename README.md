@@ -15,6 +15,10 @@ First you will need re-create the react app in the folder where you download the
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+### `npm install @material-ui/core`
+
+Run this to install the Material UI library.
+
 ### `npm run build`
 
 Builds the app for production to the `build` folder.\
