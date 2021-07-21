@@ -1,5 +1,3 @@
-import '../styles/App.css';
-
 import {
     Button,
     TextField,
@@ -7,29 +5,29 @@ import {
 import { ReactElement } from 'react';
 
 import { ReactComponent as NimbusLogo } from '../assets/images/logo.svg';
+import { StyledDiv } from './App.styles';
 
-function App(): ReactElement {
-    return (
-        <div className="App">
-            <header className="App-header">
-                <NimbusLogo />
-                <p>
-                    nimbus
-                </p>
-                <TextField
-                    placeholder="Twitch URL"
-                />
-                <p />
+export const App = (): ReactElement => (
+    <StyledDiv>
+        <NimbusLogo />
+        <p>
+            nimbus
+        </p>
+
+        <StyledDiv width="80%">
+            <TextField
+                placeholder="Twitch URL"
+                fullWidth
+            />
+            <StyledDiv paddingTop="20px">
                 <Button
                     color="primary"
                     variant="contained"
                 >
                     Enter
                 </Button>
+            </StyledDiv>
+        </StyledDiv>
 
-            </header>
-        </div>
-    );
-}
-
-export default App;
+    </StyledDiv>
+);
