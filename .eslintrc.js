@@ -51,8 +51,12 @@ module.exports = {
             },
         ],
 
+        // typescript rules
+        '@typescript-eslint/no-explicit-any': 'off',
+
         // react rules
         'react/require-default-props': 'off',
+        'react/prop-types': 'off',
 
         // jsx rules
         'react/jsx-filename-extension': 'off',
