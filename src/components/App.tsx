@@ -1,33 +1,26 @@
-import {
-    Button,
-    TextField,
-} from '@material-ui/core';
 import { ReactElement } from 'react';
+import {
+    BrowserRouter,
+    Route,
+    Switch,
+} from 'react-router-dom';
 
-import { ReactComponent as NimbusLogo } from '../assets/images/logo.svg';
-import { StyledDiv } from './App.styles';
+import { CloudPage } from './cloudPage';
+import { Search } from './search';
 
 export const App = (): ReactElement => (
-    <StyledDiv>
-        <NimbusLogo />
-        <p>
-            nimbus
-        </p>
-
-        <StyledDiv width="80%">
-            <TextField
-                placeholder="Twitch URL"
-                fullWidth
+    <BrowserRouter>
+        <Switch>
+            <Route
+                path="/"
+                exact
+                component={Search}
             />
-            <StyledDiv paddingTop="20px">
-                <Button
-                    color="primary"
-                    variant="contained"
-                >
-                    Enter
-                </Button>
-            </StyledDiv>
-        </StyledDiv>
-
-    </StyledDiv>
+            <Route
+                path="/canvas"
+                exact
+                component={CloudPage}
+            />
+        </Switch>
+    </BrowserRouter>
 );
