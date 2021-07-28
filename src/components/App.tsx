@@ -10,6 +10,7 @@ import { SearchPage } from './searchPage';
 
 export const App = (): ReactElement => (
     <BrowserRouter>
+
         <Switch>
             <Route
                 path="/"
@@ -22,5 +23,6 @@ export const App = (): ReactElement => (
                 component={CloudPage}
             />
         </Switch>
+
     </BrowserRouter>
 );
