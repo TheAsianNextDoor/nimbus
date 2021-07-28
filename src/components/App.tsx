@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 
 import { CloudPage } from './cloudPage';
-import { Search } from './search';
+import { SearchPage } from './searchPage';
 
 export const App = (): ReactElement => (
     <BrowserRouter>
@@ -14,7 +14,7 @@ export const App = (): ReactElement => (
             <Route
                 path="/"
                 exact
-                component={Search}
+                component={SearchPage}
             />
             <Route
                 path="/canvas"
