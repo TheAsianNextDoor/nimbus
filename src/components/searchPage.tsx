@@ -11,13 +11,11 @@ import {
 } from 'utils/apiUtils';
 
 import { ReactComponent as NimbusLogo } from '../assets/images/logo.svg';
-import {
-    connectTmiClient,
-    createTmiClientConfig,
-} from '../utils/tmiUtils';
 import { StyledDiv } from './searchPage.styles';
 
 type OnSubmitParams = { twitchChannelName: string };
+
+const isValidChannel = (response: any) => (response.data.data.length > 0);
 
 export const SearchPage = (): ReactElement => {
     const {
@@ -32,9 +30,8 @@ export const SearchPage = (): ReactElement => {
     const onSubmit = async ({ twitchChannelName }: OnSubmitParams) => {
         const response = await getRequest(createChannelQueryUri(twitchChannelName));
 
-        if (response.data.data.length > 0) {
-            connectTmiClient(createTmiClientConfig(twitchChannelName));
-            history.push('/canvas');
+        if (isValidChannel(response)) {
+            history.push(`/cloud/${twitchChannelName}`);
         } else {
             setError(
                 'twitchChannelName',
