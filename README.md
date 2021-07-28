@@ -1,40 +1,25 @@
-# Getting Started with nimbus
+# nimbus
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
+nimbus is a Twitch chat word cloud generator
 
-Download the source code and then open a command prompt in the project folder and run the following scripts.
 
-## Install and Run A nimbus Dev Branch
+## Getting Started with nimbus
+1. Clone Repo: https://github.com/TheAsianNextDoor/AutomateChrome.git
+2. Download Deps: npm install
+3. Start Website: npm start
 
-In the project directory, you can run:
 
-### `npx create-react-app nimbus `
-
-First you will need re-create the react app in the folder where you download the repository. Make sure you have React and Node installed and then run this command. You may need to delete the node_modules folder, and the package-lock file, both of which will be recreated when the app is generated.
-
-### `npm install @material-ui/core`
-
-Run this to install the Material UI library.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
+Name | Website
+| :--- | :---
+material-ui | https://material-ui.com/
+tmijs | https://tmijs.com/  
+yocto-queue  | https://www.npmjs.com/package/yocto-queue
+styled-components | https://styled-components.com/
+react-router | https://reactrouter.com/web/guides/quick-start
+axios | https://axios-http.com/docs/api_intro
+redux | https://redux.js.org/
+urijs | http://medialize.github.io/URI.js/
+react-hook-form | https://react-hook-form.com/
+Twitch api | https://dev.twitch.tv/docs/api/reference
