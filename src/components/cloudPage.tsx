@@ -1,25 +1,23 @@
 import {
+    createRef,
     ReactElement,
     useEffect,
 } from 'react';
 
 import { StyledCanvas } from './cloudPage.styles';
 
-type CloudPageProps = {
-    twitchResponse: any,
-};
+export const CloudPage = (): ReactElement => {
+    const canvasRef = createRef<HTMLCanvasElement>();
 
-export const CloudPage = ({ twitchResponse }: CloudPageProps): ReactElement => {
-    let canvasRef: HTMLCanvasElement;
-
-    const canvasRefCallback = (element: HTMLCanvasElement) => {
-        canvasRef = element;
-    };
+    const twitchResponse = [
+        'hello',
+        'World',
+    ];
 
     useEffect(
         () => {
-            const ctx = canvasRef.getContext('2d');
-            if (ctx === null) {
+            const ctx = canvasRef?.current?.getContext('2d');
+            if (!ctx) {
                 throw new Error('unable to retrieve canvas context');
             }
 
@@ -33,10 +31,10 @@ export const CloudPage = ({ twitchResponse }: CloudPageProps): ReactElement => {
 
     return (
         <>
-            Canvas
+            Cloud Page
             <StyledCanvas
                 id="wordCloudCanvas"
-                ref={canvasRefCallback}
+                ref={canvasRef}
             />
         </>
     );
