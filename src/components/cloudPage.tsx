@@ -6,7 +6,6 @@ import {
 } from 'react';
 import { useParams } from 'react-router-dom';
 import tmi from 'tmi.js';
-import { useThrottledEffect } from 'utils/customeHookUtils';
 import {
     connectTmiClient,
     createTmiClientConfig,
@@ -14,6 +13,7 @@ import {
 import Queue from 'yocto-queue';
 
 import { StyledCanvas } from './cloudPage.styles';
+import { useThrottledEffect } from './customHookUtils';
 
 type UseParamProps = {
     channelName: string
@@ -26,11 +26,15 @@ export const CloudPage = (): ReactElement => {
         tmiClient,
         setTmiClient,
     ] = useState<tmi.Client>();
+    const [
+        drawDep,
+        updateDrawDep,
+    ] = useState(false);
     const [queue] = useState<Queue<string>>(new Queue());
     const [maxQueueSize] = useState(10);
     const [timer] = useState(5000);
 
-    // component mount useEffect
+    // on mount setup
     useEffect(
         () => {
             if (!channelName) {
@@ -43,11 +47,13 @@ export const CloudPage = (): ReactElement => {
                 throw new Error(`tmiClient not created properly with channelName: ${channelName}`);
             }
 
-            console.log(tmiClient);
+            console.log(`tmiClient: ${tmiClient}`);
             setTmiClient(client);
             client.on(
                 'message',
                 (_channel, _tags, message) => {
+                    updateDrawDep((prev) => !prev);
+
                     if (queue.size < maxQueueSize) {
                         queue.enqueue(message);
                     } else {
@@ -57,7 +63,6 @@ export const CloudPage = (): ReactElement => {
                 },
             );
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         [],
     );
 
@@ -76,7 +81,10 @@ export const CloudPage = (): ReactElement => {
             });
         },
         timer,
-        [JSON.stringify(queue)],
+        [
+            drawDep,
+            canvasRef,
+        ],
     );
 
     return (

@@ -5,14 +5,13 @@ import {
 import { throttle } from 'throttle-debounce';
 
 export const useThrottledEffect = (
-    callback: () => any,
-    timeout: number,
-    deps: any,
+    callback: () => void,
+    timer: number,
+    deps: any[],
 ): void => {
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     const throttledCallback = useCallback(
         throttle(
-            timeout,
+            timer,
             true,
             callback,
         ),

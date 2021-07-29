@@ -58,6 +58,9 @@ module.exports = {
         'react/require-default-props': 'off',
         'react/prop-types': 'off',
 
+        // hook rules
+        'react-hooks/exhaustive-deps': 'off',
+
         // jsx rules
         'react/jsx-filename-extension': 'off',
         'react/jsx-props-no-spreading': 'off',
