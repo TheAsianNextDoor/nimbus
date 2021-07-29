@@ -13,13 +13,12 @@ export const App = (): ReactElement => (
 
         <Switch>
             <Route
-                path="/"
+                path="/search"
                 exact
                 component={SearchPage}
             />
             <Route
-                path="/canvas"
-                exact
+                path="/cloud/:channelName"
                 component={CloudPage}
             />
         </Switch>
