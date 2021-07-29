@@ -1,11 +1,12 @@
 import {
-    createRef,
     ReactElement,
     useEffect,
+    useRef,
     useState,
 } from 'react';
 import { useParams } from 'react-router-dom';
 import tmi from 'tmi.js';
+import { useThrottledEffect } from 'utils/customeHookUtils';
 import {
     connectTmiClient,
     createTmiClientConfig,
@@ -19,33 +20,23 @@ type UseParamProps = {
 };
 
 export const CloudPage = (): ReactElement => {
-    const canvasRef = createRef<HTMLCanvasElement>();
+    const canvasRef = useRef<HTMLCanvasElement>(null);
     const { channelName } = useParams<UseParamProps>();
     const [
         tmiClient,
         setTmiClient,
     ] = useState<tmi.Client>();
     const [queue] = useState<Queue<string>>(new Queue());
-    const [
-        updateFlag,
-        flipUpdateFlag,
-    ] = useState(false);
-    const [maxQueueSize] = useState(50);
+    const [maxQueueSize] = useState(10);
     const [timer] = useState(5000);
 
     // component mount useEffect
     useEffect(
         () => {
             if (!channelName) {
+                console.log('No channelName');
                 return;
             }
-
-            setInterval(
-                () => {
-                    flipUpdateFlag((prev) => !prev);
-                },
-                timer,
-            );
 
             const client = connectTmiClient(createTmiClientConfig(channelName));
             if (!client) {
@@ -71,9 +62,9 @@ export const CloudPage = (): ReactElement => {
     );
 
     // draw on canvas lifecycle
-    useEffect(
+    useThrottledEffect(
         () => {
-            console.log(`here ${[...queue]}`);
+            console.log(`here ${JSON.stringify(queue)}`);
             const ctx = canvasRef?.current?.getContext('2d');
             if (!ctx) {
                 throw new Error('unable to retrieve canvas context');
@@ -84,8 +75,8 @@ export const CloudPage = (): ReactElement => {
                 ctx.fillText(element, 10, 50);
             });
         },
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        [updateFlag],
+        timer,
+        [JSON.stringify(queue)],
     );
 
     return (
